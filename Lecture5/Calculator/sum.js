@@ -8,7 +8,18 @@ const sumRequestHandler = (req, res) =>{
   const bodyObj = Object.fromEntries(params);
   const result = Number(bodyObj.first) + Number(bodyObj.second);
   console.log(result);
- }
-)}
+      
+      res.setHeader('Content-Type', 'text/html');
+        res.write(`
+          <html>
+          <body>
+          <h1> Your Sum is ${result}</h1>
+          <button><a href="/">Go to Home </a></button>
+          </body>
+          </html>
+        `);
+        res.end();
+    });
+    };
 
 exports.sumRequestHandler = sumRequestHandler;
